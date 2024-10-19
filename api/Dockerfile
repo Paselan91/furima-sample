@@ -17,6 +17,8 @@ RUN yarn install --frozen-lockfile
 
 COPY --chown=node:node . .
 
+RUN npx prisma generate
+
 USER node
 
 
@@ -35,6 +37,8 @@ COPY --chown=node:node . .
 
 RUN yarn build
 RUN yarn install --production --frozen-lockfile && yarn cache clean
+
+RUN npx prisma generate
 
 USER node
 

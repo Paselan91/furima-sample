@@ -13,8 +13,8 @@ services:
 
   api:
     build:
-      context: .
-      dockerfile: api/Dockerfile
+      context: ./api
+      dockerfile: Dockerfile
     container_name: api
     ports:
       - '3000:3000'
@@ -27,8 +27,8 @@ services:
     depends_on:
       - postgres
     volumes:
-      - docker build -f Dockerfile ./api/api:/usr/src/app
-    command: yarn start:debug
+      - ./api:/usr/src/app
+    command: yarn start:dev
 
 volumes:
   postgres_data:
